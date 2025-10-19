@@ -1,8 +1,17 @@
-*.pdf
-.venv
+#Ignore Python virtual environments
+venv/
+.env/
+
+# Ignore Python bytecode and cache
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore temporary files
 *.tmp
-*temp
 *.swp
-.DS_Store
-.env
+*.bak
+*.~ 
+*.DS_Store
+Thumbs.db
+feature/multiply_dvide
