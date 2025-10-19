@@ -1,0 +1,16 @@
+#Ignore Python virtual environments
+venv/
+.env/
+
+# Ignore Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.bak
+*.~ 
+*.DS_Store
+Thumbs.db
