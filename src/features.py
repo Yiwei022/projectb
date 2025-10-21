@@ -1,9 +1,10 @@
-#files containing the different feature, multiplying and dividing 
+# more feature: multiplicaiton and division
 
-"""this is a functionthat mulpily two numbers"""
-def multiplying(a:int|float,b:int|float):
-        return a*b
-    
-"""this is a functionthat divide two numbers"""
-def dividing(a:int|float,b:int|float):
-        return a/b
+def mul(a: int | float, b: int | float):
+
+    return a * b
+
+
+def div(a: int | float, b: int | float):
+
+    return a / b

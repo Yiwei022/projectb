@@ -1,25 +1,42 @@
 import pytest
+from src.features import mul, div
+from src.utils import add, sub
 
-from src.features import multiplying,dividing
 
-def test_multiplying_integers():
-    assert multiplying(3,4) == 12
+def test_add():
+    assert 0 == add(-1, 1)
+    assert 6 == add(1, 2, 3)
 
-def test_multiplying_floats():
-    assert multiplying(2.5,4.0) == 10.0
 
-def test_multiplying_zero():
-    assert multiplying(0, 100) == 0
+def test_sub():
+    assert 0 == sub(1, 1)
+    assert -4 == sub(1, 2, 3)
 
-def test_dividing_integers():
-    assert dividing(10,2) == 5
 
-def test_dividing_floats():
-    assert dividing(9.0,3.0) == 3.0
+def test_mul_integers():
+    assert mul(3, 4) == 12
 
-def test_dividing_negative():
-    assert dividing(-10, 2) == -5
 
-def test_dividing_by_zero():
+def test_mul_floats():
+    assert mul(2.5, 4.0) == 10.0
+
+
+def test_mul_zero():
+    assert mul(0, 100) == 0
+
+
+def test_div_integers():
+    assert div(10, 2) == 5
+
+
+def test_div_floats():
+    assert div(9.0, 3.0) == 3.0
+
+
+def test_div_negative():
+    assert div(-10, 2) == -5
+
+
+def test_div_by_zero():
     with pytest.raises(ZeroDivisionError):
-        dividing(5, 0)
+        div(5, 0)
