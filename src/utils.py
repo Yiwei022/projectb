@@ -1,8 +1,9 @@
-"""implements add and subtract functions taking “unlimited” 
-number of params"""
+"""implements add and subtract functions taking “unlimited” number of params"""
+
 
 def add(*args):
     return sum(args)
+
 
 def sub(*args):
     """
@@ -12,5 +13,3 @@ def sub(*args):
     for i in args[1:]:
         diff -= i
     return diff
-    
- 
