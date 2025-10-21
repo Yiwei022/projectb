@@ -1,6 +1,5 @@
 import pytest
-from src.features import mul, div
-from src.utils import add, sub
+from src.utils import add, mul, sub, div
 
 
 def test_add():
