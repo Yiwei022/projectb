@@ -1,63 +1,44 @@
-import io
-import sys
+from src.calculator import calculator
 import builtins
-from calculator import run_calculator
 
+def test_add(monkeypatch, capfd):
+    inputs = iter(["2", "3", "4", "n"])  # addition
+    monkeypatch.setattr(builtins, "input", lambda _: next(inputs))
+    calculator()
+    out, _ = capfd.readouterr()
+    assert "Résultat : 5.0" in out
 
-def run_with_inputs(inputs):
-    """Helper to simulate multiple inputs and capture printed output."""
-    input_iter = iter(inputs)
+def test_sub(monkeypatch, capfd):
+    inputs = iter(["5", "2", "2", "n"])  # soustraction
+    monkeypatch.setattr(builtins, "input", lambda _: next(inputs))
+    calculator()
+    out, _ = capfd.readouterr()
+    assert "Résultat : 3.0" in out
 
-    def mock_input(prompt=""):
-        try:
-            return next(input_iter)
-        except StopIteration:
-            raise EOFError
+def test_mul(monkeypatch, capfd):
+    inputs = iter(["4", "3", "1", "n"])  # multiplication
+    monkeypatch.setattr(builtins, "input", lambda _: next(inputs))
+    calculator()
+    out, _ = capfd.readouterr()
+    assert "Résultat : 12.0" in out
 
-    # Capture printed output
-    captured_output = io.StringIO()
-    sys.stdout = captured_output
+def test_div(monkeypatch, capfd):
+    inputs = iter(["10", "2", "3", "n"])  # division
+    monkeypatch.setattr(builtins, "input", lambda _: next(inputs))
+    calculator()
+    out, _ = capfd.readouterr()
+    assert "Résultat : 5.0" in out
 
-    # Patch input()
-    original_input = builtins.input
-    builtins.input = mock_input
+def test_div_zero(monkeypatch, capfd):
+    inputs = iter(["10", "0", "3", "n"])  # division par zéro
+    monkeypatch.setattr(builtins, "input", lambda _: next(inputs))
+    calculator()
+    out, _ = capfd.readouterr()
+    assert "Erreur : Division par zéro interdite." in out
 
-    try:
-        run_calculator()
-    except EOFError:
-        pass
-    finally:
-        builtins.input = original_input
-        sys.stdout = sys.__stdout__
-
-    return captured_output.getvalue()
-
-
-def test_addition(monkeypatch):
-    output = run_with_inputs(["3+3"])
-    assert "Result: 6.0" in output
-
-
-def test_subtraction(monkeypatch):
-    output = run_with_inputs(["10 - 4"])
-    assert "Result: 6.0" in output
-
-
-def test_multiplication(monkeypatch):
-    output = run_with_inputs(["2*5"])
-    assert "Result: 10.0" in output
-
-
-def test_division(monkeypatch):
-    output = run_with_inputs(["8 / 2"])
-    assert "Result: 4.0" in output
-
-
-def test_invalid_input(monkeypatch):
-    output = run_with_inputs(["abc"])
-    assert "Invalid format" in output
-
-
-def test_division_by_zero(monkeypatch):
-    output = run_with_inputs(["5 / 0"])
-    assert "Division by zero" in output
+def test_invalid_choice(monkeypatch, capfd):
+    inputs = iter(["1", "1", "9", "n"])  # choix invalide
+    monkeypatch.setattr(builtins, "input", lambda _: next(inputs))
+    calculator()
+    out, _ = capfd.readouterr()
+    assert "Choix invalide" in out

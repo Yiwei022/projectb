@@ -1,4 +1,4 @@
-from utils import add, sub, mul, div
+from .utils import add, sub, mul, div
 
 def calculator():
     while True:
