@@ -23,6 +23,8 @@ def mul(a: int | float, b: int | float):
 
 # hello
 # Goodbye
+
+
 def div(a: int | float, b: int | float):
 
     return a / b

@@ -1,5 +1,6 @@
 from .utils import add, sub, mul, div
 
+
 def calculator():
     while True:
         try:
@@ -28,7 +29,8 @@ def calculator():
         if again != "o":
             print("À bientôt !")
             break
-        
-#exemple d'utilisation 
+
+
+# exemple d'utilisation
 if __name__ == "__main__":
     calculator()
