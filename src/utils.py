@@ -21,7 +21,8 @@ def mul(a: int | float, b: int | float):
 
     return a * b
 
-#hello
+# hello
+# Goodbye
 def div(a: int | float, b: int | float):
 
     return a / b
